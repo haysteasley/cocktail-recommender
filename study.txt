@@ -1,0 +1,90 @@
+study.txt
+Hays Teasley
+For my project, I want to create an interface that creates a cultural object for the user: a drink. 
+My project aims to generate a recipe for a drink based on the user's preferences; that they can then make with freinds or family.
+Options for users would be whether the drink is a mocktail or alcoholic, glass type, and ingredients.
+
+- preferredIngredients will be an array of all possible ingredients.
+- isAlcoholic will be a boolean to whether there is alcohol in the drink or not.
+- preferredGlassType will be a string that the user enters.
+- recommendedCocktail will then be the object that stores the recommended drink. 
+
+This project will use a Cocktail API, hopefully, that will be used for the user's requests. 
+
+const cocktailData = {
+   
+    preferredIngredients: ["Tequila", "Vodka"],
+    isAlcoholic: true,
+    preferredGlassType: "Cocktail glass",
+
+    recommendedCocktail: {
+      name: "Margarita",
+      category: "Ordinary Drink",
+      instructions: "Rub the rim of the glass with the lime slice.",
+      ingredients: [
+        { name: "Tequila", measure: "1 1/2 oz" },
+        { name: "Triple sec", measure: "1/2 oz" },
+        { name: "Lime juice", measure: "1 oz" },
+        { name: "Salt", measure: null },
+      ],
+    },
+
+    favoriteCocktails: [
+      { name: "Mojito", category: "Cocktail", isAlcoholic: true },
+      { name: "Virgin Pina Colada", category: "Non-Alcoholic", isAlcoholic: false },
+      { name: "Screwdriver", category: "Cocktail", isAlcoholic: true}
+    ],
+  };
+  
+  const sampleCocktails = [
+    {
+      name: "Margarita",
+      category: "Ordinary Drink",
+      instructions: "Rub the rim of the glass with the lime slice...",
+      ingredients: [
+        { name: "Tequila", measure: "1 1/2 oz" },
+        { name: "Triple sec", measure: "1/2 oz" },
+        { name: "Lime juice", measure: "1 oz" },
+        { name: "Salt", measure: null },
+      ],
+    },
+    {
+      name: "Sample Cocktail 1",
+      category: "Sample Category 1",
+      instructions: "Sample instructions for Cocktail 1...",
+      ingredients: [
+        { name: "Ingredient 1", measure: "1 oz" },
+        { name: "Ingredient 2", measure: "0.5 oz" },
+      ],
+    },
+    // Add more sample cocktails here
+  ];
+
+  function setInitialRecommendedCocktail() {
+    // Select a random sample cocktail
+    const randomIndex = Math.floor(Math.random() * sampleCocktails.length);
+    cocktailData.recommendedCocktail = sampleCocktails[randomIndex];
+  }
+ 
+  function fetchRecommendedCocktail() {
+    // Update the recommendedCocktail property with the fetched data
+    cocktailData.recommendedCocktail = {
+      name: "Screwdriver",
+      category: "Cocktail",
+      instructions: "Shake with ice.",
+      ingredients: [
+        { name: "Vodka", measure: "1 oz" },
+        { name: "Orange Juice", measure: "4 oz" },
+      ],
+    };
+  }
+  
+  // Function 2: Add a favorite cocktail
+  function addFavoriteCocktail(name, category, isAlcoholic) {
+    const newCocktail = { name, category, isAlcoholic };
+    cocktailData.favoriteCocktails.push(newCocktail);
+  }
+  
+  // Call the fetchRecommendedCocktail function to initially populate the recommended cocktail
+  fetchRecommendedCocktail();
+ 
